@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+body {
+    color: #2a2c2d;
+    background-color:#f080a0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: url('./asset/bg_music.jpg');  
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: block;
+    position: relative;
+}
+
+main {
+    max-width: 420px;
+    max-height: 900px;
+    width: 100%;
+    height: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.container {
+    position: absolute;
+    top: 60vh;
+    max-width: 420px;
+    width: 100%;
+    height: 40vh;
+}
+
+
+.button-wr {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.5fr 1fr 1fr;
+}
+.grid-item-bot {
+    grid-column: 1/4;
+    margin-top: 0.5rem;
+}
+
+.btn_circle {
+    margin: 1rem;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0.06rem; 
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 100%;
+    border: 4px solid #fff;
+    color: #fff;
+    background-color: transparent;
+}
+  
+.btn_circle:active {
+    background-color: #fff;
+    color: #2a2c2d;
+    border-color: #2a2c2d;
+}
+
+.btn_play {
+    font-size: 1rem;
+    line-height: 1;
+    height: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.06rem;
+    display: flex;
+    padding: 1rem 1.5rem 1rem 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    border-radius: 1.5rem;
+    border: 2px solid #fff;;
+    color: #2a2c2d;
+    background-color: #fff;
+  }
+  
+.btn_play:focus,
+.btn_play:active {
+    cursor: pointer;
+    color: #2a2c2d;
+    background-color: #fff;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+}
+
+.btn_stop {
+    /* border: 2px solid #fff; */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    background-color: transparent;
+  }
+  
+.btn_stop:focus,
+.btn_stop:active {
+    cursor: pointer;
+    color: #2a2c2d;
+    background-color: #fff;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+}
+
+.btn_scroll {
+    -moz-transform: translateX(10%);
+    -webkit-transform: translateX(10%);
+    transform: translateX(10%);
+    -moz-animation: bouncing-text 0.5s linear infinite alternate;
+    -webkit-animation: bouncing-text 0.5s linear infinite alternate;
+    animation: bouncing-text 1s linear infinite alternate;
+}
+
+@-moz-keyframes bouncing-text {
+    0% {
+        -moz-transform: translateX(10%);
+    }
+    100% {
+        -moz-transform: translateX(-3%);
+}
+}
+
+@-webkit-keyframes bouncing-text {
+    0% {
+        -webkit-transform: translateX(10%);
+    }
+    100% {
+        -webkit-transform: translateX(-3%);
+}
+}
+
+.non-mobile {
+    display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+    .non-mobile {
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: red;
+        height: 50px;
+        
+    }
+}

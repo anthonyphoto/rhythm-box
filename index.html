@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony's Rhythm Box (Korean)</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link href="./index.css" rel="stylesheet" />
+</head>
+<body>
+    <audio
+        controls hidden
+        id="js-audio-main"
+        src="./asset/love_redevelopment.aac">
+        Your browser does not support the audio element.
+    </audio>
+    <audio
+        controls hidden
+        id="js-audio-ajussi"
+        src="./asset/ajussi.aac">
+        Your browser does not support the audio element.
+    </audio>
+    <audio
+        controls hidden
+        id="js-audio-bbyong"
+        src="./asset/bbyong.aac">
+        Your browser does not support the audio element.
+    </audio>
+    <audio
+        controls hidden
+        id="js-audio-drum"
+        src="./asset/drum.aac">
+        Your browser does not support the audio element.
+    </audio>
+    <audio
+        controls hidden
+        id="js-audio-temb"
+        src="./asset/temb.aac">
+        Your browser does not support the audio element.
+    </audio>
+    <audio
+        controls hidden
+        id="js-audio-cheer"
+        src="./asset/cheer.aac">
+        Your browser does not support the audio element.
+    </audio>
+    <audio
+        controls hidden
+        id="js-audio-crash"
+        src="./asset/crash.aac">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="non-mobile">
+        * This page is optimized with a mobile device.
+    </div>
+    <main>
+        <div class="container">
+
+
+            <div class="button-wr">
+                <div class="grid-item-bot">
+                    <button id="js-music-start" class="btn_play">
+                        <i class="fa fa-sharp fa-solid fa-play-circle-o" style="font-size:1.5rem; color: #2a2c2d;"></i><section class='btn_scroll'>&nbsp; Start Music</section>
+                    <button id="js-music-stop" class="btn_play btn_stop">
+                        <i class="fa fa-sharp fa-stop-circle-o" style="font-size:1.5rem;"></i><section class='btn_scroll'>&nbsp; Stop Music</section>
+                    </button>
+                </div>
+
+                <button id="js-ajussi" class="btn_circle">아저씨</button>
+                <button id="js-drum" class="btn_circle">드럼</button>
+                <button id="js-crash" class="btn_circle">크래시</button>
+
+                <button id="js-cheer" class="btn_circle">환호</button>
+                <button id="js-bbyong" class="btn_circle">뿅뿅</button>
+                <button id="js-temb" class="btn_circle">탬버린</button>
+
+    
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="./index.js"></script>
+</html>
