@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Anthony's Rhythm Box (Korean)</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
@@ -11,57 +11,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link href="./index.css" rel="stylesheet" />
 </head>
-<body>
+<body id="js-bg">
+    <audio
+        controls hidden
+        id="js-audio-demo"
+        src="./asset/demo.m4a">
+        Your browser does not support the audio element.
+    </audio>
     <audio
         controls hidden
         id="js-audio-main"
-        src="./asset/love_redevelopment.aac">
+        src="./asset/love_redevelopment.m4a">
         Your browser does not support the audio element.
     </audio>
     <audio
         controls hidden
         id="js-audio-ajussi"
-        src="./asset/ajussi.aac">
+        src="./asset/ajussi.m4a">
         Your browser does not support the audio element.
     </audio>
     <audio
         controls hidden
         id="js-audio-bbyong"
-        src="./asset/bbyong.aac">
+        src="./asset/bbyong.m4a">
         Your browser does not support the audio element.
     </audio>
     <audio
         controls hidden
         id="js-audio-drum"
-        src="./asset/drum.aac">
+        src="./asset/drum.m4a">
         Your browser does not support the audio element.
     </audio>
     <audio
         controls hidden
         id="js-audio-temb"
-        src="./asset/temb.aac">
+        src="./asset/temb.m4a">
         Your browser does not support the audio element.
     </audio>
     <audio
         controls hidden
         id="js-audio-cheer"
-        src="./asset/cheer.aac">
+        src="./asset/cheer.m4a">
         Your browser does not support the audio element.
     </audio>
     <audio
         controls hidden
         id="js-audio-crash"
-        src="./asset/crash.aac">
+        src="./asset/crash.m4a">
         Your browser does not support the audio element.
     </audio>
     <div class="non-mobile">
         * This page is optimized with a mobile device.
     </div>
     <main>
+        <div class="demo-wr">
+            <button id="js-demo-start" class="btn_demo">
+                <div class="demo-item blink">DEMO</div>
+            </button>
+            <button id="js-demo-stop" class="btn_demo">
+                <div class="demo-item">STOP</div>
+            </button>
+        </div>
+
         <div class="container">
-
-
-            <div class="button-wr">
+            <div id="js-button-wr" class="button-wr">
                 <div class="grid-item-bot">
                     <button id="js-music-start" class="btn_play">
                         <i class="fa fa-sharp fa-solid fa-play-circle-o" style="font-size:1.5rem; color: #2a2c2d;"></i><section class='btn_scroll'>&nbsp; Start Music</section>
@@ -70,16 +83,18 @@
                     </button>
                 </div>
 
-                <button id="js-ajussi" class="btn_circle">아저씨</button>
-                <button id="js-drum" class="btn_circle">드럼</button>
-                <button id="js-crash" class="btn_circle">크래시</button>
-
                 <button id="js-cheer" class="btn_circle">환호</button>
-                <button id="js-bbyong" class="btn_circle">뿅뿅</button>
+                <button id="js-drum" class="btn_circle">드럼</button>
+                <button id="js-crash" class="btn_circle">심벌즈</button>
+                <button id="js-ajussi" class="btn_circle">아저씨</button>
                 <button id="js-temb" class="btn_circle">탬버린</button>
-
-    
+                <button id="js-bbyong" class="btn_circle">뿅뿅</button>
+                <div class="grid-footer">©2022 Anthony K.</div>
             </div>
+            <div id="js-demo-playing" class="demo-playing">
+                <img src="./asset/loading-6.gif">
+            </div>
+
         </div>
     </main>
 
