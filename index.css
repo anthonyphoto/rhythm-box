@@ -210,6 +210,10 @@ main {
     animation: blinker 1s linear infinite;
 }
 
+.blink_long {
+    animation: blinker 2.5s linear infinite;
+}
+
 @keyframes blinker {
     50% {
         opacity: 0;
@@ -250,10 +254,34 @@ main {
 @media only screen and (min-width: 1024px) {
     .non-mobile {
         display: block;
+        position: fixed;
+        top: 20%;
+        font-size: 3.5rem;
+        font-weight: 500;
         width: 100%;
         text-align: center;
-        color: red;
+        color: rgba(255, 255, 255, 0.6);
         height: 50px;
         
+    }
+
+    html {
+        background-color:#f080a0;
+    }
+
+    body {
+        color: #2a2c2d;
+        background-color:#f080a0;
+        overflow: hidden;
+    
+        width: 100vw;
+        height: 100vh;
+    
+        background: url('./asset/bg_music.jpg');  
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: contain;
+        display: block;
+        position: relative;
     }
 }
