@@ -21,8 +21,8 @@ const handleClickStyle = elem => {
     }, 800)
 }
 
-const handleEventListener = () => {
-    document.getElementById('js-demo-start').addEventListener('click', () => {
+const addDemoStartListener = () => {
+    const handleDemoClick = e => {
         document.getElementById('js-audio-main').pause();
         document.getElementById('js-music-start').style.display = 'flex';
         document.getElementById('js-music-stop').style.display = 'none';
@@ -31,87 +31,88 @@ const handleEventListener = () => {
         target.play();
         document.getElementById('js-button-wr').style.display = 'none';
         document.getElementById('js-demo-playing').style.display = 'block';
-
         document.getElementById('js-demo-start').style.display = 'none';
         document.getElementById('js-demo-stop').style.display = 'block';
-    });
+        addDemoStopListener();
+        document.getElementById('js-demo-start').removeEventListener('click', handleDemoClick);
+    }
 
-    document.getElementById('js-audio-demo').addEventListener('ended', () => {
-        document.getElementById('js-demo-playing').style.display = 'none';
-        document.getElementById('js-button-wr').style.display = 'grid';
-        document.getElementById('js-demo-start').style.display = 'block';
-        document.getElementById('js-demo-stop').style.display = 'none';
-    });
+    document.getElementById('js-demo-start').addEventListener('click', handleDemoClick);
+}
 
-    document.getElementById('js-demo-stop').addEventListener('click', () => {
+const addDemoStopListener = () => {
+    const handleDemoStop = e => {
         document.getElementById('js-audio-demo').pause();
         document.getElementById('js-demo-playing').style.display = 'none';
         document.getElementById('js-button-wr').style.display = 'grid';
         document.getElementById('js-demo-start').style.display = 'block';
         document.getElementById('js-demo-stop').style.display = 'none';
-    });
+        addDemoStartListener();
+        addMusicStartListener();
+        document.getElementById('js-audio-demo').removeEventListener('ended', handleDemoStop);
+        document.getElementById('js-demo-stop').removeEventListener('click', handleDemoStop);
+    
+    }
+    document.getElementById('js-audio-demo').addEventListener('ended', handleDemoStop);
+    document.getElementById('js-demo-stop').addEventListener('click', handleDemoStop);
+}
 
-    document.getElementById('js-music-start').addEventListener('click', () => {
+const addMusicStartListener = () => {
+    const handleMusicStart = e => {
+        e.stopPropagation();
         const target = document.getElementById('js-audio-main');
         target.currentTime = 0;
         target.play();
         document.getElementById('js-music-start').style.display = 'none';
         document.getElementById('js-music-stop').style.display = 'flex';
-    });
+        addMusicStopListener();
+        document.getElementById('js-music-start').removeEventListener('click', handleMusicStart);
+    }
+    document.getElementById('js-music-start').addEventListener('click', handleMusicStart);
+}
 
-    document.getElementById('js-audio-main').addEventListener('ended', () => {
-        document.getElementById('js-music-start').style.display = 'flex';
-        document.getElementById('js-music-stop').style.display = 'none';
-    });
-
-    document.getElementById('js-music-stop').addEventListener('click', () => {
+const addMusicStopListener = () => {
+    const handleMusicStop = e => {
+        e.stopPropagation();
         document.getElementById('js-audio-main').pause();
         document.getElementById('js-music-start').style.display = 'flex';
         document.getElementById('js-music-stop').style.display = 'none';
-    });
+        addMusicStartListener();
+        document.getElementById('js-audio-main').removeEventListener('ended', handleMusicStop);
+        document.getElementById('js-music-stop').removeEventListener('click', handleMusicStop);    
+    }
 
-    document.getElementById('js-ajussi').addEventListener('click', () => {
-        const target = document.getElementById('js-audio-ajussi');
-        target.currentTime = 0;
-        target.play();
-        handleClickStyle(document.getElementById('js-ajussi'));
-    });
+    document.getElementById('js-audio-main').addEventListener('ended', handleMusicStop);
+    document.getElementById('js-music-stop').addEventListener('click', handleMusicStop);
+}
 
-    document.getElementById('js-bbyong').addEventListener('click', () => {
-        const target = document.getElementById('js-audio-bbyong');
-        target.currentTime = 0;
-        target.play();
-        handleClickStyle(document.getElementById('js-bbyong'));
-    });
+const addClickEventListener = () => {
+    const buttonWr = document.getElementById('js-button-wr');
+    const lookup = {
+        'js-ajussi': document.getElementById('js-audio-ajussi'),
+        'js-bbyong': document.getElementById('js-audio-bbyong'),
+        'js-drum': document.getElementById('js-audio-drum'),
+        'js-temb': document.getElementById('js-audio-temb'),
+        'js-cheer': document.getElementById('js-audio-cheer'),
+        'js-crash': document.getElementById('js-audio-crash'),
+    }
 
-    document.getElementById('js-drum').addEventListener('click', () => {
-        const target = document.getElementById('js-audio-drum');
-        target.currentTime = 0;
-        target.play();
-        handleClickStyle(document.getElementById('js-drum'));
+    buttonWr.addEventListener('click', e => {
+        const id = e.target.id;    
+        switch(id) {
+            case 'js-ajussi' : 
+            case 'js-bbyong' : 
+            case 'js-drum' : 
+            case 'js-temb' : 
+            case 'js-cheer' : 
+            case 'js-crash' : 
+                const target = lookup[id];
+                target.currentTime = 0;
+                target.play();
+                handleClickStyle(e.target);
+                break;
+        }
     });
-
-    document.getElementById('js-temb').addEventListener('click', () => {
-        const target = document.getElementById('js-audio-temb');
-        target.currentTime = 0;
-        target.play();
-        handleClickStyle(document.getElementById('js-temb'));
-    });
-
-    document.getElementById('js-crash').addEventListener('click', () => {
-        const target = document.getElementById('js-audio-crash');
-        target.currentTime = 0;
-        target.play();
-        handleClickStyle(document.getElementById('js-crash'));
-    });
-
-    document.getElementById('js-cheer').addEventListener('click', () => {
-        const target = document.getElementById('js-audio-cheer');
-        target.currentTime = 0;
-        target.play();
-        handleClickStyle(document.getElementById('js-cheer'));
-    });
-
 }
 
 const main = () => {
@@ -120,11 +121,14 @@ const main = () => {
     document.getElementById('js-demo-playing').style.display = 'none';
     const param = window.location.search.split(/=/);
     const id = param.length === 2 ? param[1] : 'default';
+
     if (id === 'mj') {
         document.getElementById('js-bg').classList.add('bg_override');
     }
-    handleEventListener();
-}
 
+    addDemoStartListener();
+    addMusicStartListener();
+    addClickEventListener();
+}
 
 main();
